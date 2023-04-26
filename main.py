@@ -16,16 +16,16 @@ COLORS = {
 # - Also adds pipe "|" and spaces between letters
 # - Also typecasts character to a string then transforms it to uppercase
 # - Return value is a concatenation of the formatted letters in the string
+# Maybe need to refactor by splitting logic and formatting
 def get_colored_string(string, word_to_guess):
     colored_string = ''
     for i in range(len(string)):
-        for j in range(len(word_to_guess)):
-            if i == j and string[i] == word_to_guess[j]:
-                colored_string += f"| {COLORS['green_bg']}{str(string[i]).upper()}{COLORS['reset']} "
-            elif i == j and string[i] in word_to_guess:
-                colored_string += f"| {COLORS['yellow_bg']}{str(string[i]).upper()}{COLORS['reset']} "
-            elif i == j and string[i] not in word_to_guess:
-                colored_string += f"| {COLORS['grey_bg']}{str(string[i]).upper()}{COLORS['reset']} "
+        if string[i] == word_to_guess[i]:
+            colored_string += f"| {COLORS['green_bg']}{str(string[i]).upper()}{COLORS['reset']} "
+        elif string[i] in word_to_guess:
+            colored_string += f"| {COLORS['yellow_bg']}{str(string[i]).upper()}{COLORS['reset']} "
+        elif string[i] not in word_to_guess:
+            colored_string += f"| {COLORS['grey_bg']}{str(string[i]).upper()}{COLORS['reset']} "
     return colored_string + "|"
 
 def print_grid(guesses):
