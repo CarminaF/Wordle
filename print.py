@@ -70,6 +70,6 @@ def print_you_won():
 def print_word_to_guess(word_to_guess):
 	print(f'''{COLORS['yellow_font']}
 **********************************************************
-		The letter was : {word_to_guess}
+		The word was : {word_to_guess}
 **********************************************************
 	''')

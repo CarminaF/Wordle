@@ -5,8 +5,8 @@ from print import print_title, print_you_won, print_you_lose, print_word_to_gues
 ####### FORMAT_STRING FUNCTION #########
 # - gets passed a color list from "check_guess" function
 # - checks the same index of color list and string
-#   - if it is 'G' then turn background to green
-#   - if 'Y' then turn background to yellow
+#       - if it is 'G' then turn background to green
+#       - if 'Y' then turn background to yellow
 # - also adds pipe "|" and spaces between letters
 def format_string(string, color):
     colored_string = ''
