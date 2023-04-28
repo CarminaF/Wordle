@@ -1,4 +1,6 @@
-from colors import COLORS
+import random
+from colors import colors # colors.py imports colored module
+from wordbank import wordbank
 from input import get_valid_input
 from print import print_title, print_you_won, print_you_lose, print_word_to_guess
 
@@ -9,15 +11,15 @@ from print import print_title, print_you_won, print_you_lose, print_word_to_gues
 #       - if 'Y' then turn background to yellow
 # - also adds pipe "|" and spaces between letters
 def format_string(string, color):
-    colored_string = ''
+    colored_string = '            |'
     for i in range(len(string)):
         if color[i] == 'G':
-            colored_string += f"| {COLORS['green_bg']}{string[i].upper()}{COLORS['reset']} "
+            colored_string += f" {colors['green_bg']}{string[i].upper()}{colors['reset']} |"
         elif color[i] == 'Y':
-            colored_string += f"| {COLORS['yellow_bg']}{string[i].upper()}{COLORS['reset']} "
+            colored_string += f" {colors['yellow_bg']}{string[i].upper()}{colors['reset']} |"
         else:
-            colored_string += f"| {COLORS['grey_bg']}{string[i].upper()}{COLORS['reset']} "
-    return colored_string + "|"
+            colored_string += f" {colors['grey_bg']}{string[i].upper()}{colors['reset']} |"
+    return colored_string
 
 ####### CHECK_GUESS FUNCTION #########
 # - first checks if each letter is in the correct position
@@ -44,7 +46,7 @@ def check_guess(string, word_to_guess):
 ####### PRINT_LINE FUNCTION #########
 # - Prints horizontal lines of the grid
 def print_line():
-    print("+---+---+---+---+---+")
+    print("            +---+---+---+---+---+")
 
 ####### PRINT_GUESS FUNCTION #########
 # - Prints with user's guesses
@@ -58,16 +60,14 @@ def print_grid(guesses, word_to_guess):
         print(check_guess(guess, word_to_guess)) 
     for i in range(6 - len(guesses)):
         print_line()
-        print("|   |   |   |   |   |")
+        print("            |   |   |   |   |   |")
     print_line()
 
-'''
-def print_alphabet(guesses, word_to_guess):
-'''
+
 guess_remaining = 6
 guess_count = 0
 guesses = []
-word_to_guess = "ABOVE"
+word_to_guess = random.choice(wordbank).upper()
 print_title()
 print_grid(guesses, word_to_guess)
 while guess_remaining != 0:
@@ -80,6 +80,7 @@ while guess_remaining != 0:
     guess_count += 1
     guess_remaining -= 1
     if user_input == word_to_guess:
+        print_word_to_guess(word_to_guess)
         print_you_won()
         break
 if guess_remaining == 0:
