@@ -20,12 +20,16 @@ def get_keyboard_index(letter):
             continue
     return index
 
-
+def print_keyboard_margin():
+    print("     ", end="")
+    
 def display_keyboard():
+    print_keyboard_margin()
     for row in range(len(keyboard)):
         for letter in keyboard[row]:
             print("+---", end="") 
-        print("+")   
+        print("+")
+        print_keyboard_margin()
         for letter in range(len(keyboard[row])):
             if keyboard_color[row][letter] == 'G':
                 print(f"| {colors['green_bg']}{keyboard[row][letter]}{colors['reset']} ", end="")
@@ -34,6 +38,7 @@ def display_keyboard():
             else:
                 print(f"| {colors['grey_bg']}{keyboard[row][letter]}{colors['reset']} ", end="")
         print("|")
+        print_keyboard_margin()
     # print last line of keyboard
     for letter in keyboard[0]:
         print("+---", end="") 
@@ -44,3 +49,4 @@ def color_in_keyboard(letter, color):
     if keyboard_color[index[0]][index[1]] != 'G':
         if keyboard_color[index[0]][index[1]] == '-' or keyboard_color[index[0]][index[1]] == 'Y':
             keyboard_color[index[0]][index[1]] = color
+
