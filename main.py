@@ -5,6 +5,11 @@ from input import get_valid_input
 from keyboard import color_in_keyboard, display_keyboard
 from print import print_title, print_you_won, print_you_lose, print_word_to_guess
 
+####### PRINT_MARGIN FUNCTION #########
+# - Prints spaces to center grid
+def print_margin():
+    print("               ", end="")
+
 ####### FORMAT_STRING FUNCTION #########
 # - gets passed a color list from "check_guess" function
 # - checks the same index of color list and string
@@ -12,7 +17,7 @@ from print import print_title, print_you_won, print_you_lose, print_word_to_gues
 #       - if 'Y' then turn background to yellow
 # - also adds pipe "|" and spaces between letters
 def format_string(string, color):
-    colored_string = "               |"
+    colored_string = "|"
     for i in range(len(string)):
         if color[i] == 'G':
             colored_string += f" {colors['green_bg']}{string[i].upper()}{colors['reset']} |"
@@ -49,7 +54,10 @@ def check_guess(string, word_to_guess):
 ####### PRINT_LINE FUNCTION #########
 # - Prints horizontal lines of the grid
 def print_line():
-    print("               +---+---+---+---+---+")
+    print_margin()
+    print("+---+---+---+---+---+")
+
+
 
 ####### PRINT_GUESS FUNCTION #########
 # - Prints with user's guesses
@@ -60,6 +68,7 @@ def print_grid(guesses, word_to_guess):
         grid.append(guess)
     for guess in guesses:
         print_line()
+        print_margin()
         print(check_guess(guess, word_to_guess)) 
     for i in range(6 - len(guesses)):
         print_line()

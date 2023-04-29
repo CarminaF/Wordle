@@ -11,7 +11,7 @@ from print import print_instructions
 # - returns
 def get_valid_input():
 	while(True):
-		user_input = input("         Enter a 5-letter word: ")
+		user_input = input("           Enter a 5-letter word: ")
 		print("\n")
 		user_input = user_input.strip().upper()
 		if not user_input.isalpha():
