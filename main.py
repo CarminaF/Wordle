@@ -1,7 +1,8 @@
 import random
 from colors import colors # colors.py imports colored module
-from wordbank import wordbank
+from word_bank import word_bank
 from input import get_valid_input
+from keyboard import color_in_keyboard, display_keyboard
 from print import print_title, print_you_won, print_you_lose, print_word_to_guess
 
 ####### FORMAT_STRING FUNCTION #########
@@ -25,13 +26,14 @@ def format_string(string, color):
 # - first checks if each letter is in the correct position
 # - then checks if correct letter in the wrong position 
 # - "found_flag" and breaking out of j loop ensures there is only one letter in the user's string
-#    highlighted per occurence in the word_to_guess even if there are more occurences in the user's guess
+#    highlighted per occurrence in the word_to_guess even if there are more occurrences in the user's guess
 def check_guess(string, word_to_guess):
     color = ['-'] * 5
     found_flag = [False] * 5
     for i in range(len(string)):
         if string[i] == word_to_guess[i]:
             color[i] = 'G'
+            color_in_keyboard(color[i].upper(), 'G')
             found_flag[i] = True
     
     for i in range(len(string)):
@@ -39,6 +41,7 @@ def check_guess(string, word_to_guess):
             for j in range(len(string)):
                 if string[i] == word_to_guess[j] and not found_flag[j]:
                     color[i] = 'Y'
+                    color_in_keyboard(color[i].upper(), 'Y')
                     found_flag[j] = True
                     break
     return format_string(string, color)
@@ -67,9 +70,10 @@ def print_grid(guesses, word_to_guess):
 guess_remaining = 6
 guess_count = 0
 guesses = []
-word_to_guess = random.choice(wordbank).upper()
+word_to_guess = random.choice(word_bank).upper()
 print_title()
 print_grid(guesses, word_to_guess)
+display_keyboard()
 while guess_remaining != 0:
     user_input = get_valid_input()
     if user_input == "QUIT":
@@ -77,12 +81,13 @@ while guess_remaining != 0:
         break
     guesses.append(user_input)
     print_grid(guesses, word_to_guess)
+    display_keyboard()
     guess_count += 1
     guess_remaining -= 1
     if user_input == word_to_guess:
         print_word_to_guess(word_to_guess)
         print_you_won()
         break
-if guess_remaining == 0:
-    print_word_to_guess(word_to_guess)
-    print_you_lose()
+    elif guess_remaining == 0:
+        print_word_to_guess(word_to_guess)
+        print_you_lose()

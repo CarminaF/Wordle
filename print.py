@@ -1,24 +1,31 @@
 from colors import colors
+
 def print_instructions():
 	print(f'''
 {colors['blue_font']}
-******************************************************************************************
+**********************************************************************************
 
 INSTRUCTIONS:
-1.	You have six tries to guess the five-letter Wordle of the day.
 
-2.	Type in your guess and submit your word by hitting the “enter” key.
+1.	You have six tries to guess the five-letter Wordle 
+	of the day.
 
-3.	The color of the tiles will change after you submit your word. A yellow tile indicates 
-	that you picked the right letter but it’s in the wrong spot. The green tile indicates 
-	that you picked the right letter in the correct spot. The gray tile indicates that 
-	the letter you picked is not included in the word at all.
+2.	Type in your guess and submit your word by hitting 
+	the “enter” key.
 
-4.	Continue until you solve the Wordle or run out of guesses. Good luck!
+3.	The color of the tiles will change after you submit 
+	your word. A yellow tile indicates that you picked the right 
+	letter but it’s in the wrong spot. The green tile indicates 
+	that you picked the right letter in the correct spot. The 
+	gray tile indicates that the letter you picked is not 
+	included in the word at all.
 
-5. Type "quit" and press "enter" on your keyboard to exit the game
+4.	Continue until you solve the Wordle or run out of guesses. 
 
-******************************************************************************************
+5.	Type "quit" and press "enter" on your keyboard to exit 
+	the game.
+
+**********************************************************************************
 {colors['reset']}
 ''')
 
