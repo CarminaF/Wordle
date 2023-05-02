@@ -22,7 +22,7 @@ def get_valid_input():
 			return user_input
 		elif len(user_input) != 5:
 			print(f"           {colors['red_font']}ERROR: You must enter 5 letters{colors['reset']}")
-		elif not (user_input.lower() in valid_words or user_input.lower() in word_bank):
+		elif user_input.lower() not in valid_words and user_input.lower() not in word_bank:
 			print(f"           {colors['red_font']}ERROR: Not a valid word in the word bank{colors['reset']}")
 		else:
 			return user_input
