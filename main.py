@@ -49,6 +49,13 @@ def check_guess(string, word_to_guess):
                     color_in_keyboard(string[i].upper(), 'Y')
                     found_flag[j] = True
                     break
+            if color[i] == '-':
+                color_in_keyboard(string[i].upper(), 'B')
+    
+    # for i in range(len(string)):
+    #     if color[i] == '-' and not found_flag[j]:
+    #         color_in_keyboard(string[i].upper(), 'B')
+                    
     return format_string(string, color)
 
 ####### PRINT_LINE FUNCTION #########

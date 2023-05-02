@@ -35,6 +35,8 @@ def display_keyboard():
                 print(f"| {colors['green_bg']}{keyboard[row][letter]}{colors['reset']} ", end="")
             elif keyboard_color[row][letter] == 'Y':
                 print(f"| {colors['yellow_bg']}{keyboard[row][letter]}{colors['reset']} ", end="")
+            elif keyboard_color[row][letter] == 'B':
+                print(f"| {colors['black_font']}{keyboard[row][letter]}{colors['reset']} ", end="")
             else:
                 print(f"| {colors['grey_bg']}{keyboard[row][letter]}{colors['reset']} ", end="")
         print("|")
@@ -44,9 +46,12 @@ def display_keyboard():
         print("+---", end="") 
     print("+")
 
+####### COLOR_IN_KEYBOARD FUNCTION #########
+# - populates keyboard 2D list above
+# - if keyboard colour is already green, it will stay green in consequent guesses
+# - if keyboard is already populated as yellow, it can only be overwritten by green colors
 def color_in_keyboard(letter, color):
     index = get_keyboard_index(letter)
     if keyboard_color[index[0]][index[1]] != 'G':
-        if keyboard_color[index[0]][index[1]] == '-' or keyboard_color[index[0]][index[1]] == 'Y':
+        if (keyboard_color[index[0]][index[1]] == 'Y' and color == 'G') or (keyboard_color[index[0]][index[1]] == '-'):
             keyboard_color[index[0]][index[1]] = color
-
