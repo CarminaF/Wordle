@@ -15,14 +15,14 @@ def get_valid_input():
 		print("\n")
 		user_input = user_input.strip().upper()
 		if not user_input.isalpha():
-			print(f"{colors['red_font']}ERROR: Please enter alphabets only{colors['reset']}")
+			print(f"           {colors['red_font']}ERROR: Please enter alphabets only{colors['reset']}")
 		elif user_input == 'INSTRUCTIONS':
 			print_instructions()
 		elif user_input.upper() == "QUIT":
 			return user_input
 		elif len(user_input) != 5:
-			print(f"{colors['red_font']}ERROR: You must enter 5 letters{colors['reset']}")
+			print(f"           {colors['red_font']}ERROR: You must enter 5 letters{colors['reset']}")
 		elif not (user_input.lower() in valid_words or user_input.lower() in word_bank):
-			print(f"{colors['red_font']}ERROR: Not a valid word in the word bank{colors['reset']}")
+			print(f"           {colors['red_font']}ERROR: Not a valid word in the word bank{colors['reset']}")
 		else:
 			return user_input
