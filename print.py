@@ -80,3 +80,10 @@ def print_word_to_guess(word_to_guess):
 		The word was : {word_to_guess}
 *****************************************************
 	''')
+
+def print_thank_you():
+	print(f'''{colors['yellow_font']}
+*****************************************************
+	    Thank you for playing Wordle! 
+*****************************************************
+	''')

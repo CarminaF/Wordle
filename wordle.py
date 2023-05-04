@@ -4,7 +4,7 @@ from word_bank import word_bank
 from scoreboard import init_scoreboard
 from input import get_valid_input
 from keyboard import color_in_keyboard, display_keyboard, reset_keyboard
-from print import print_title, print_you_won, print_you_lose, print_word_to_guess
+from print import print_title, print_you_won, print_you_lose, print_word_to_guess, print_thank_you
 
 ####### PRINT_MARGIN FUNCTION #########
 # - Prints spaces to center grid
@@ -80,7 +80,8 @@ def print_grid(guesses, word_to_guess):
         print(check_guess(guess, word_to_guess)) 
     for i in range(6 - len(guesses)):
         print_line()
-        print("               |   |   |   |   |   |")
+        print_margin()
+        print("|   |   |   |   |   |")
     print_line()
 
 
@@ -125,7 +126,7 @@ def main():
                 reset_keyboard()
             else:
                 break
-    print("Thank you for playing, see you soon!")
+    print_thank_you()
 
 if __name__ == "__main__":
     main()
