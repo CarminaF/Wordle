@@ -18,47 +18,43 @@ def print_margin():
 #       - if it is 'G' then turn background to green
 #       - if 'Y' then turn background to yellow
 # - also adds pipe "|" and spaces between letters
-def format_string(string, color):
-    colored_string = "|"
-    for i in range(len(string)):
+def format_guess(guess, color):
+    colored_guess = "|"
+    for i in range(len(guess)):
         if color[i] == 'G':
-            colored_string += f" {colors['green_bg']}{string[i].upper()}{colors['reset']} |"
+            colored_guess += f" {colors['green_bg']}{guess[i].upper()}{colors['reset']} |"
         elif color[i] == 'Y':
-            colored_string += f" {colors['yellow_bg']}{string[i].upper()}{colors['reset']} |"
+            colored_guess += f" {colors['yellow_bg']}{guess[i].upper()}{colors['reset']} |"
         else:
-            colored_string += f" {string[i].upper()}{colors['reset']} |"
-    return colored_string
+            colored_guess += f" {guess[i].upper()}{colors['reset']} |"
+    return colored_guess
 
 ####### CHECK_GUESS FUNCTION #########
 # - first checks if each letter is in the correct position
 # - then checks if correct letter in the wrong position 
-# - "found_flag" and breaking out of j loop ensures there is only one letter in the user's string
+# - "found" and breaking out of j loop ensures there is only one letter in the user's string
 #    highlighted per occurrence in the word_to_guess even if there are more occurrences in the user's guess
-def check_guess(string, word_to_guess):
+def check_guess(user_guess, word_to_guess):
     color = ['-'] * 5
-    found_flag = [False] * 5
-    for i in range(len(string)):
-        if string[i] == word_to_guess[i]:
+    found = [False] * 5
+    for i in range(len(user_guess)):
+        if user_guess[i] == word_to_guess[i]:
             color[i] = 'G'
-            color_in_keyboard(string[i].upper(), 'G')
-            found_flag[i] = True
+            color_in_keyboard(user_guess[i].upper(), 'G')
+            found[i] = True
     
-    for i in range(len(string)):
+    for i in range(len(user_guess)):
         if color[i] == '-':
-            for j in range(len(string)):
-                if string[i] == word_to_guess[j] and not found_flag[j]:
+            for j in range(len(user_guess)):
+                if user_guess[i] == word_to_guess[j] and not found[j]:
                     color[i] = 'Y'
-                    color_in_keyboard(string[i].upper(), 'Y')
-                    found_flag[j] = True
+                    color_in_keyboard(user_guess[i].upper(), 'Y')
+                    found[j] = True
                     break
             if color[i] == '-':
-                color_in_keyboard(string[i].upper(), 'B')
-    
-    # for i in range(len(string)):
-    #     if color[i] == '-' and not found_flag[j]:
-    #         color_in_keyboard(string[i].upper(), 'B')
+                color_in_keyboard(user_guess[i].upper(), 'B')
                     
-    return format_string(string, color)
+    return format_guess(user_guess, color)
 
 ####### PRINT_LINE FUNCTION #########
 # - Prints horizontal lines of the grid
