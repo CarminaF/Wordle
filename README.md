@@ -16,12 +16,28 @@ This is a recreation of the New York Times' Wordle game as a terminal applicatio
 - Languages: Python 3 and bash script
 - Project type: terminal application
 - IDE: Visual Studio Code
+- Package manager: pip
 
 ## Requirements
-Installation of Python 3 is required for this program to run.
 
-Download Python 3:  
-https://www.python.org/downloads/
+Python 3 is required for this program to run which may or may not already be installed in your computer.   
+
+### Check if Python 3 is installed:  
+
+1. Enter the below in the terminal to check the python version installed:
+    ```
+    python -V
+    ```
+    The output should look something like this:
+    ```
+    Python 3.11.1
+    ```
+    NOTE: You may have both Python 2 and Python 3 installed in your computer. To check for specifically Python 3, enter the below in the terminal:
+    ```
+    python3 -V
+    ```
+2. If Python 3 is not installed on your computer, you can download it using this link: https://www.python.org/downloads/
+
 
 ## Installation  
 1. Enter the below in the terminal to clone the repository:
@@ -39,6 +55,22 @@ https://www.python.org/downloads/
 4. To exit the program at anytime, simply type "quit" and press enter
 
 ## Features
+
+
+
+### Game Logic
+
+#### Random Word Generator
+
+#### Keyboard Display
+
+#### Grid Display
+
+### Input
+
+### Print
+
+### Scoreboard
 
 ## Testing
 The testing for this application involves automatic and manual testing
