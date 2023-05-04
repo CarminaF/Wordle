@@ -9,9 +9,12 @@ from print import print_instructions
 #		- word does not contain only alphabets
 #		- word is not 5 letters
 # - returns
-def get_valid_input():
+def get_valid_input(purpose=""):
 	while(True):
-		user_input = input("           Enter a 5-letter word: ")
+		if purpose == "ask_to_play_again":
+			user_input = input("           Would you like to play again? (Y/N): ")
+		else:
+			user_input = input("           Enter a 5-letter word: ")
 		print("\n")
 		user_input = user_input.strip().upper()
 		if not user_input.isalpha():
@@ -20,9 +23,17 @@ def get_valid_input():
 			print_instructions()
 		elif user_input.upper() == "QUIT":
 			return user_input
+		elif purpose == "ask_to_play_again":
+			if user_input == "Y":
+				return True
+			elif user_input == "N":
+				return False
+			else:
+				print(f"           {colors['red_font']}ERROR: You must enter Y or N{colors['reset']}")
 		elif len(user_input) != 5:
 			print(f"           {colors['red_font']}ERROR: You must enter 5 letters{colors['reset']}")
 		elif user_input.lower() not in valid_words and user_input.lower() not in word_bank:
 			print(f"           {colors['red_font']}ERROR: Not a valid word in the word bank{colors['reset']}")
 		else:
 			return user_input
+

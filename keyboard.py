@@ -55,3 +55,9 @@ def color_in_keyboard(letter, color):
     if keyboard_color[index[0]][index[1]] != 'G':
         if (keyboard_color[index[0]][index[1]] == 'Y' and color == 'G') or (keyboard_color[index[0]][index[1]] == '-'):
             keyboard_color[index[0]][index[1]] = color
+
+def reset_keyboard():
+    for row in range(len(keyboard_color)):
+        for letter in range(len(keyboard_color[row])):
+            keyboard_color[row][letter] = '-'
+

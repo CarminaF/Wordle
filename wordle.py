@@ -1,8 +1,9 @@
 import random
 from colors import colors # colors.py imports colored module
 from word_bank import word_bank
+from scoreboard import init_scoreboard
 from input import get_valid_input
-from keyboard import color_in_keyboard, display_keyboard
+from keyboard import color_in_keyboard, display_keyboard, reset_keyboard
 from print import print_title, print_you_won, print_you_lose, print_word_to_guess
 
 ####### PRINT_MARGIN FUNCTION #########
@@ -83,27 +84,48 @@ def print_grid(guesses, word_to_guess):
     print_line()
 
 
-guess_remaining = 6
-guess_count = 0
-guesses = []
-word_to_guess = random.choice(word_bank).upper()
-print_title()
-print_grid(guesses, word_to_guess)
-display_keyboard()
-while guess_remaining != 0:
-    user_input = get_valid_input()
-    if user_input == "QUIT":
-        print("Thank you for playing, see you soon!")
-        break
-    guesses.append(user_input)
-    print_grid(guesses, word_to_guess)
-    display_keyboard()
-    guess_count += 1
-    guess_remaining -= 1
-    if user_input == word_to_guess:
-        print_word_to_guess(word_to_guess)
-        print_you_won()
-        break
-    elif guess_remaining == 0:
-        print_word_to_guess(word_to_guess)
-        print_you_lose()
+def main():
+    init_scoreboard()
+
+    guess_remaining = 6
+    guess_count = 0
+    guesses = []
+    word_to_guess = random.choice(word_bank).upper()
+
+    continue_game = True
+    while continue_game:
+        if guess_remaining == 6:
+            print_title()
+        
+        print_grid(guesses, word_to_guess)
+        display_keyboard()
+        user_input = get_valid_input()
+        
+        guesses.append(user_input)
+        guess_count += 1
+        guess_remaining -= 1
+        
+        if user_input == "QUIT":
+            continue_game = False
+            break
+        elif user_input == word_to_guess or guess_remaining == 0:
+            print_grid(guesses, word_to_guess)
+            display_keyboard()
+            print_word_to_guess(word_to_guess)
+            if user_input == word_to_guess:
+                print_you_won()    
+            elif guess_remaining == 0:
+                print_you_lose()
+            continue_game = get_valid_input("ask_to_play_again")
+            if continue_game:
+                guess_remaining = 6
+                guess_count = 0
+                guesses = []
+                word_to_guess = random.choice(word_bank).upper()
+                reset_keyboard()
+            else:
+                break
+    print("Thank you for playing, see you soon!")
+
+if __name__ == "__main__":
+    main()
