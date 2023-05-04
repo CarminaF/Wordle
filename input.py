@@ -2,8 +2,10 @@ from colors import colors
 from word_bank import word_bank
 from valid_words import valid_words
 from print import print_instructions
+from scoreboard import print_scoreboard
 
 margin = '           '
+
 ####### GET_VALID_INPUT FUNCTION #########
 # - Keeps asking user for input if
 #		- The input is not "instruction" or "quit" or
@@ -22,12 +24,14 @@ def get_valid_input(purpose=""):
 			print(f"{margin}{colors['red_font']}ERROR: Please enter alphabets only{colors['reset']}")
 		elif user_input == 'INSTRUCTIONS':
 			print_instructions()
+		elif user_input == 'SCOREBOARD':
+			print_scoreboard()
 		elif user_input.upper() == "QUIT":
 			return user_input
 		elif purpose == "ask_to_play_again":
-			if user_input == "Y":
+			if user_input == "Y" or user_input == "YES":
 				return True
-			elif user_input == "N":
+			elif user_input == "N" or user_input == "NO":
 				return False
 			else:
 				print(f"{margin}{colors['red_font']}ERROR: You must enter Y or N{colors['reset']}")

@@ -1,8 +1,9 @@
 import random
 from colors import colors # colors.py imports colored module
 from word_bank import word_bank
-from scoreboard import init_scoreboard
+from scoreboard import init_scoreboard, update_scoreboard
 from input import get_valid_input
+from timekeeper import get_start_time, get_game_duration
 from keyboard import color_in_keyboard, display_keyboard, reset_keyboard
 from print import print_title, print_you_won, print_you_lose, print_word_to_guess, print_thank_you
 
@@ -25,7 +26,7 @@ def format_string(string, color):
         elif color[i] == 'Y':
             colored_string += f" {colors['yellow_bg']}{string[i].upper()}{colors['reset']} |"
         else:
-            colored_string += f" {colors['grey_bg']}{string[i].upper()}{colors['reset']} |"
+            colored_string += f" {string[i].upper()}{colors['reset']} |"
     return colored_string
 
 ####### CHECK_GUESS FUNCTION #########
@@ -94,6 +95,7 @@ def main():
     word_to_guess = random.choice(word_bank).upper()
 
     continue_game = True
+    start_time = get_start_time()
     while continue_game:
         if guess_remaining == 6:
             print_title()
@@ -110,15 +112,18 @@ def main():
             continue_game = False
             break
         elif user_input == word_to_guess or guess_remaining == 0:
+            game_duration = get_game_duration(start_time)
             print_grid(guesses, word_to_guess)
             display_keyboard()
             print_word_to_guess(word_to_guess)
             if user_input == word_to_guess:
-                print_you_won()    
+                print_you_won()
+                update_scoreboard(game_duration, guess_count)    
             elif guess_remaining == 0:
                 print_you_lose()
             continue_game = get_valid_input("ask_to_play_again")
             if continue_game:
+                start_time = get_start_time()
                 guess_remaining = 6
                 guess_count = 0
                 guesses = []
@@ -127,6 +132,7 @@ def main():
             else:
                 break
     print_thank_you()
+
 
 if __name__ == "__main__":
     main()

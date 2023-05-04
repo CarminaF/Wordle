@@ -13,12 +13,30 @@ This is a recreation of the New York Times' Wordle game as a terminal applicatio
 
 
 ## Technology
-- Languages: Python3 and bash script
+- Languages: Python 3 and bash script
 - Project type: terminal application
 - IDE: Visual Studio Code
 
+## Requirements
+Installation of Python 3 is required for this program to run.
 
-## Installation
+Download Python 3:  
+https://www.python.org/downloads/
+
+## Installation  
+1. Enter the below in the terminal to clone the repository:
+    ```
+    git clone git@github.com:CarminaF/Wordle.git wordle
+    ```
+2. Navigate to the Wordle directory:
+    ```
+    cd wordle
+    ```
+3. Execute run.sh to start the Wordle program:
+    ```
+    ./run.sh
+    ```
+4. To exit the program at anytime, simply type "quit" and press enter
 
 ## Features
 
@@ -38,3 +56,4 @@ https://docs.google.com/spreadsheets/d/1Ixv0nXXOBi0LIbejPO5LQYAO3tF9AxpY7CBLLdf4
 - https://stackoverflow.com/questions/38485373/from-the-terminal-verify-if-python-3-is-installed
 - https://perldoc.perl.org/perlrequick
 - https://stackoverflow.com/questions/4542732/how-do-i-negate-a-test-with-regular-expressions-in-a-bash-script
+- https://pynative.com/python-timedelta/ 

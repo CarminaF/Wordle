@@ -15,7 +15,7 @@ INSTRUCTIONS:
 
 3.	The color of the tiles will change after you submit 
 	your word. A yellow tile indicates that you picked the right 
-	letter but it’s in the wrong spot. The green tile indicates 
+	letter but it is in the wrong spot. The green tile indicates 
 	that you picked the right letter in the correct spot. The 
 	gray tile indicates that the letter you picked is not 
 	included in the word at all.
@@ -25,9 +25,10 @@ INSTRUCTIONS:
 5.	Type "quit" and press "enter" on your keyboard to exit 
 	the game.
 
+6. Type "scoreboard" to view the scoreboard
+
 **********************************************************************************
-{colors['reset']}
-''')
+{colors['reset']}''')
 
 def print_title():
 	print(f'''{colors['green_font']}
@@ -43,8 +44,8 @@ def print_title():
 	
 	- "INSTRUCTIONS" for how to play
 	- "QUIT" to exit 
-{colors['reset']}                    
-''')
+	- "SCOREBOARD" to view scoreboard
+{colors['reset']}''')
 
 def print_you_lose():
 	print(f'''{colors['red_font']}
@@ -58,8 +59,7 @@ def print_you_lose():
  ▒ ▒ ░░  ░ ░ ░ ▒   ░░░ ░ ░      ░ ░   ░ ░ ░ ▒  ░  ░  ░     ░       ░ 
  ░ ░         ░ ░     ░            ░  ░    ░ ░        ░     ░  ░ ░    
  ░ ░
- {colors['reset']}                                                                
-''')
+ {colors['reset']}''')
 
 def print_you_won():
 	print(f'''{colors['green_font']}
@@ -71,19 +71,18 @@ def print_you_won():
     | $$  | $$  | $$| $$  | $$      | $$$/ \  $$$| $$  | $$| $$\  $$$    
     | $$  |  $$$$$$/|  $$$$$$/      | $$/   \  $$|  $$$$$$/| $$ \  $$ /$$
     |__/   \______/  \______/       |__/     \__/ \______/ |__/  \__/|__/
-{colors['reset']}                                                   
-''')
+{colors['reset']}''')
 
 def print_word_to_guess(word_to_guess):
 	print(f'''{colors['yellow_font']}
 *****************************************************
 		The word was : {word_to_guess}
 *****************************************************
-	''')
+ {colors['reset']}  ''')
 
 def print_thank_you():
 	print(f'''{colors['yellow_font']}
 *****************************************************
 	    Thank you for playing Wordle! 
 *****************************************************
-	''')
+{colors['reset']}''')

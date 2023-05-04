@@ -36,9 +36,9 @@ def display_keyboard():
             elif keyboard_color[row][letter] == 'Y':
                 print(f"| {colors['yellow_bg']}{keyboard[row][letter]}{colors['reset']} ", end="")
             elif keyboard_color[row][letter] == 'B':
-                print(f"| {colors['black_font']}{keyboard[row][letter]}{colors['reset']} ", end="")
-            else:
                 print(f"| {colors['grey_bg']}{keyboard[row][letter]}{colors['reset']} ", end="")
+            else:
+                print(f"| {keyboard[row][letter]}{colors['reset']} ", end="")
         print("|")
         print_keyboard_margin()
     # print last line of keyboard
