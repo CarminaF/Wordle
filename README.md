@@ -53,6 +53,7 @@ Python 3 is required for this program to run which may or may not already be ins
     ./run.sh
     ```
 4. To exit the program at anytime, simply type "quit" and press enter
+5. For best results, please use dark mode on your selected IDE/Terminal.
 
 ## Features
 
