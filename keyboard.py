@@ -1,21 +1,23 @@
 from pprint import pprint
-from colors import colors
-keyboard = (('Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'), 
+from colors import COLORS
+KEYBOARD = (('Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'), 
             ('A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ' '),
             (' ','Z', 'X', 'C', 'V', 'B', 'N', 'M', ' ', ' '))
 
-# need to hard code this instead of using keyboard_color = [['-'] * 10] * 3 
-# as it results in duplication of colors in the rows/first dimension of the array 
-keyboard_color = [['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+# need to hard code this instead of using 
+# keyboard_color = [['-'] * 10] * 3 
+# as it results in duplication of colors in 
+# the rows/first dimension of the array 
+KEYBOARD_COLOR = [['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
                   ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
                   ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-']]
 
 
 def get_keyboard_index(letter):
     index = ()
-    for row in range(len(keyboard)):
+    for row in range(len(KEYBOARD)):
         try:
-            index = (row, keyboard[row].index(letter))
+            index = (row, KEYBOARD[row].index(letter))
         except ValueError:
             continue
     return index
@@ -25,39 +27,44 @@ def print_keyboard_margin():
     
 def display_keyboard():
     print_keyboard_margin()
-    for row in range(len(keyboard)):
-        for letter in keyboard[row]:
+    reset = f"{COLORS['reset']} "
+    for row in range(len(KEYBOARD)):
+        for letter in KEYBOARD[row]:
             print("+---", end="") 
         print("+")
         print_keyboard_margin()
-        for letter in range(len(keyboard[row])):
-            if keyboard_color[row][letter] == 'G':
-                print(f"| {colors['green_bg']}{keyboard[row][letter]}{colors['reset']} ", end="")
-            elif keyboard_color[row][letter] == 'Y':
-                print(f"| {colors['yellow_bg']}{keyboard[row][letter]}{colors['reset']} ", end="")
-            elif keyboard_color[row][letter] == 'B':
-                print(f"| {colors['grey_bg']}{keyboard[row][letter]}{colors['reset']} ", end="")
-            else:
-                print(f"| {keyboard[row][letter]}{colors['reset']} ", end="")
+        for letter in range(len(KEYBOARD[row])):
+            color = "| "
+            if KEYBOARD_COLOR[row][letter] == 'G':
+                color = f"| {COLORS['green_bg']}"
+            elif KEYBOARD_COLOR[row][letter] == 'Y':
+                color = f"| {COLORS['yellow_bg']}"
+            elif KEYBOARD_COLOR[row][letter] == 'B': # B for blackout
+                color = f"| {COLORS['grey_bg']}"
+            print(color + f"{KEYBOARD[row][letter]}" + reset, end="")
         print("|")
         print_keyboard_margin()
     # print last line of keyboard
-    for letter in keyboard[0]:
+    for letter in KEYBOARD[0]:
         print("+---", end="") 
     print("+")
 
 ####### COLOR_IN_KEYBOARD FUNCTION #########
 # - populates keyboard 2D list above
-# - if keyboard colour is already green, it will stay green in consequent guesses
-# - if keyboard is already populated as yellow, it can only be overwritten by green colors
+# - if keyboard colour is already green, it will stay green in 
+#   consequent guesses
+# - if keyboard is already populated as yellow, it can only be 
+#   overwritten by green colors
 def color_in_keyboard(letter, color):
     index = get_keyboard_index(letter)
-    if keyboard_color[index[0]][index[1]] != 'G':
-        if (keyboard_color[index[0]][index[1]] == 'Y' and color == 'G') or (keyboard_color[index[0]][index[1]] == '-'):
-            keyboard_color[index[0]][index[1]] = color
+    if KEYBOARD_COLOR[index[0]][index[1]] != 'G':
+        if ((KEYBOARD_COLOR[index[0]][index[1]] == 'Y' 
+             and color == 'G') or 
+             (KEYBOARD_COLOR[index[0]][index[1]] == '-')):
+            KEYBOARD_COLOR[index[0]][index[1]] = color
 
 def reset_keyboard():
-    for row in range(len(keyboard_color)):
-        for letter in range(len(keyboard_color[row])):
-            keyboard_color[row][letter] = '-'
+    for row in range(len(KEYBOARD_COLOR)):
+        for letter in range(len(KEYBOARD_COLOR[row])):
+            KEYBOARD_COLOR[row][letter] = '-'
 

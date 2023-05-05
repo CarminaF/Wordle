@@ -1,9 +1,14 @@
 # Contains two variables:
-# - word_bank_string is a long string containing the word bank from a github repository delimited by a new line "\n"()
-# - word_bank splits the words above at the delimiter "\n" into a list which is then used by the random.choice function() in main.py
-# Note: This list is smaller and contains more common words than the valid_words.py so that it is easier for the user to guess
+# - word_bank_string is a long string containing the 
+#   word bank from a github repository delimited by a 
+#   new line "\n"()
+# - word_bank splits the words above at the delimiter "\n" 
+#    into a list which is then used by the random.choice 
+#    unction() in main.py
+# Note: This list is smaller and contains more common words 
+# than the valid_words.py so that it is easier for the user to guess
 
-word_bank_string = '''aback
+WORD_BANK_STRING = '''aback
 abase
 abate
 abbey
@@ -2313,4 +2318,4 @@ zebra
 zesty
 zonal'''
 
-word_bank = word_bank_string.split("\n")
+WORD_BANK = WORD_BANK_STRING.split("\n")

@@ -1,9 +1,12 @@
 # Contains two variables
-# - "valid_words_string" is a long string containing the word bank from a github repository delimited by a new line "\n"()
-# - "valid_words splits" the words above at the delimiter "\n" into a list which is then used by the random.choice function() in main.py
-# Note: This list is bigger and contains less common words than the word_bank.py so that the user can utilise these harder words in their guess
+# - "valid_words_string" is a long string containing the word bank 
+#   from a github repository delimited by a new line "\n"()
+# - "valid_words splits" the words above at the delimiter "\n" into 
+#   a list which is then used by the random.choice function() in main.py
+# Note: This list is bigger and contains less common words than the 
+# word_bank.py so that the user can utilise these harder words in their guess
 
-valid_words_string = '''rossa
+VALID_WORDS_STRING = '''rossa
 jetty
 wizzo
 cuppa
@@ -14859,4 +14862,4 @@ fungs
 cadgy
 jalap'''
 
-valid_words = valid_words_string.split("\n")
+VALID_WORDS = VALID_WORDS_STRING.split("\n")

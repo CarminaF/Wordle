@@ -1,9 +1,9 @@
-from colors import colors
+from colors import COLORS
 
 def print_instructions():
 	print(f'''
-{colors['blue_font']}
-**********************************************************************************
+{COLORS['blue_font']}
+********************************************************************
 
 INSTRUCTIONS:
 
@@ -27,28 +27,28 @@ INSTRUCTIONS:
 
 6. Type "scoreboard" to view the scoreboard
 
-**********************************************************************************
-{colors['reset']}''')
+********************************************************************
+{COLORS['reset']}''')
 
 def print_title():
-	print(f'''{colors['green_font']}
+	print(f'''{COLORS['green_font']}
 ██╗    ██╗ ██████╗ ██████╗ ██████╗ ██╗     ███████╗
 ██║    ██║██╔═══██╗██╔══██╗██╔══██╗██║     ██╔════╝
 ██║ █╗ ██║██║   ██║██████╔╝██║  ██║██║     █████╗  
 ██║███╗██║██║   ██║██╔══██╗██║  ██║██║     ██╔══╝  
 ╚███╔███╔╝╚██████╔╝██║  ██║██████╔╝███████╗███████╗
  ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═╝╚═════╝ ╚══════╝╚══════╝
-{colors['reset']}
-{colors['yellow_font']}
+{COLORS['reset']}
+{COLORS['yellow_font']}
 **********    Guess the 5-letter word!   ********** 
 	
 	- "INSTRUCTIONS" for how to play
 	- "QUIT" to exit 
 	- "SCOREBOARD" to view scoreboard
-{colors['reset']}''')
+{COLORS['reset']}''')
 
 def print_you_lose():
-	print(f'''{colors['red_font']}
+	print(f'''{COLORS['red_font']}
 ▓██   ██▓ ▒█████   █    ██     ██▓     ▒█████    ██████ ▓█████  ▐██▌ 
  ▒██  ██▒▒██▒  ██▒ ██  ▓██▒   ▓██▒    ▒██▒  ██▒▒██    ▒ ▓█   ▀  ▐██▌ 
   ▒██ ██░▒██░  ██▒▓██  ▒██░   ▒██░    ▒██░  ██▒░ ▓██▄   ▒███    ▐██▌ 
@@ -58,10 +58,10 @@ def print_you_lose():
  ▓██ ░▒░   ░ ▒ ▒░ ░░▒░ ░ ░    ░ ░ ▒  ░  ░ ▒ ▒░ ░ ░▒  ░ ░ ░ ░  ░ ░  ░ 
  ▒ ▒ ░░  ░ ░ ░ ▒   ░░░ ░ ░      ░ ░   ░ ░ ░ ▒  ░  ░  ░     ░       ░ 
  ░ ░         ░ ░     ░            ░  ░    ░ ░        ░     ░  ░ ░    
- ░ ░{colors['reset']}''')
+ ░ ░{COLORS['reset']}''')
 
 def print_you_won():
-	print(f'''{colors['green_font']}
+	print(f'''{COLORS['green_font']}
 /$$     /$$/$$$$$$  /$$   /$$       /$$      /$$  /$$$$$$  /$$   /$$ /$$
 |  $$   /$$/$$__  $$| $$  | $$      | $$  /$ | $$ /$$__  $$| $$$ | $$| $$
  \  $$ /$$/ $$  \ $$| $$  | $$      | $$ /$$$| $$| $$  \ $$| $$$$| $$| $$
@@ -69,18 +69,19 @@ def print_you_won():
    \  $$/ | $$  | $$| $$  | $$      | $$$$_  $$$$| $$  | $$| $$  $$$$|__/
     | $$  | $$  | $$| $$  | $$      | $$$/ \  $$$| $$  | $$| $$\  $$$    
     | $$  |  $$$$$$/|  $$$$$$/      | $$/   \  $$|  $$$$$$/| $$ \  $$ /$$
-    |__/   \______/  \______/       |__/     \__/ \______/ |__/  \__/|__/{colors['reset']}''')
+    |__/   \______/  \______/       |__/     \__/ \______/ |__/  \__/|__/
+{COLORS['reset']}''')
 
 def print_word_to_guess(word_to_guess):
-	print(f'''{colors['yellow_font']}
+	print(f'''{COLORS['yellow_font']}
 *****************************************************
 		The word was : {word_to_guess}
 *****************************************************
-{colors['reset']}  ''')
+{COLORS['reset']}  ''')
 
 def print_thank_you():
-	print(f'''{colors['yellow_font']}
+	print(f'''{COLORS['yellow_font']}
 *****************************************************
 	    Thank you for playing Wordle! 
 *****************************************************
-{colors['reset']}''')
+{COLORS['reset']}''')

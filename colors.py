@@ -1,9 +1,10 @@
 from colored import fg, bg, attr
 
 ####### COLORS GLOBAL DICTIONARY #########
-# - Initializing global colors dictionary for better readability
+# - Initializing global colors dictionary for 
+#   better readability
 # - Utilises colored module
-colors = {
+COLORS = {
     "green_bg": bg(28),
     "yellow_bg": bg(94),
     "grey_bg": bg(243),

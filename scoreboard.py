@@ -1,22 +1,22 @@
 import csv
 import datetime
-from colors import colors
+from colors import COLORS
 
-score_file_path = "scoreboard.csv"
-column_names = ["Position", "Name", "Attempts", "Duration", "Word"]
+SCORE_FILE_PATH = "scoreboard.csv"
+COLUMN_NAMES = ["Position", "Name", "Attempts", "Duration", "Word"]
 
 def init_scoreboard():
 	try:
-		scoreboard_file = open(score_file_path, "r", newline="") #In Windows, new lines are created automatically. 
+		scoreboard_file = open(SCORE_FILE_PATH, "r", newline="") #In Windows, new lines are created automatically. 
 		scoreboard_file.close()
 	except FileNotFoundError:
-		with open(score_file_path, "w", newline="") as file:
-			writer = csv.DictWriter(file, column_names)
+		with open(SCORE_FILE_PATH, "w", newline="") as file:
+			writer = csv.DictWriter(file, COLUMN_NAMES)
 			writer.writeheader()
 
 def write_to_score_file(scoreboard):
-	with open(score_file_path, "w", newline="") as file:
-		writer = csv.DictWriter(file, column_names)
+	with open(SCORE_FILE_PATH, "w", newline="") as file:
+		writer = csv.DictWriter(file, COLUMN_NAMES)
 		writer.writeheader()
 		for row in scoreboard:
 			writer.writerow(row)
@@ -42,7 +42,7 @@ def sort_scoreboard(scoreboard):
 
 def add_to_scoreboard(name, guess_count, duration, word):
 	scoreboard = []
-	with open(score_file_path, "r+", newline="") as file:
+	with open(SCORE_FILE_PATH, "r+", newline="") as file:
 		reader = csv.DictReader(file)
 		for row in reader:
 			scoreboard.append(row)
@@ -73,9 +73,9 @@ def adjust_spaces(string, field):
 	return formatted_string
 
 def print_scoreboard():
-	with open(score_file_path, "r") as file:
-		reader = csv.DictReader(file, column_names)
-		formatted_scoreboard = f'''{colors["blue_font"]}
+	with open(SCORE_FILE_PATH, "r") as file:
+		reader = csv.DictReader(file, COLUMN_NAMES)
+		formatted_scoreboard = f'''{COLORS["blue_font"]}
 		╔═╗╔═╗╔═╗╦═╗╔═╗╔╗ ╔═╗╔═╗╦═╗╔╦╗
 		╚═╗║  ║ ║╠╦╝║╣ ╠╩╗║ ║╠═╣╠╦╝ ║║
 		╚═╝╚═╝╚═╝╩╚═╚═╝╚═╝╚═╝╩ ╩╩╚══╩╝
@@ -86,10 +86,10 @@ def print_scoreboard():
 			formatted_scoreboard += f"|{adjust_spaces(row['Attempts'], 'attempts')}"
 			formatted_scoreboard += f"|{adjust_spaces(row['Duration'], 'duration')}"
 			formatted_scoreboard += f"|{adjust_spaces(row['Word'], 'word')}|\n"
-		formatted_scoreboard += f"{colors['reset']}\n"
+		formatted_scoreboard += f"{COLORS['reset']}\n"
 	print(formatted_scoreboard)
 
-def update_scoreboard(duration, guess_count, word):
+def update_score(duration, guess_count, word):
 	name = input("		Enter your name for the scoreboard: ")
 	updated_scoreboard = add_to_scoreboard(name.strip(), guess_count,
 						 str(duration), word)
