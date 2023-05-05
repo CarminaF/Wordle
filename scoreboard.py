@@ -59,7 +59,8 @@ def adjust_spaces(string, field):
             max_len = 10
         case "name":
             max_len = 16
-            string = string[:16]
+            # Truncate name len to max_len so field not too wide
+            string = string[:max_len]
         case "attempts":
             max_len = 10
         case "duration":

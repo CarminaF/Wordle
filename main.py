@@ -58,7 +58,7 @@ def check_guess(user_guess, word_to_guess):
                     break
             if color[i] == '-':
                 color_in_keyboard(user_guess[i].upper(), 'B')                
-    return format_guess(user_guess, color)
+    return color
 
 ####### PRINT_LINE FUNCTION #########
 # - Prints horizontal lines of the grid
@@ -78,7 +78,9 @@ def print_grid(guesses, word_to_guess):
     for guess in guesses:
         print_line()
         print_margin()
-        print(check_guess(guess, word_to_guess)) 
+        color = check_guess(guess, word_to_guess)
+        formatted_guess = format_guess(guess, color)
+        print(formatted_guess) 
     for i in range(6 - len(guesses)):
         print_line()
         print_margin()
