@@ -1,20 +1,99 @@
 import csv
+import datetime
 from colors import colors
 
-file_name = "scoreboard.csv"
+score_file_path = "scoreboard.csv"
+column_names = ["Position", "Name", "Attempts", "Duration", "Word"]
 
 def init_scoreboard():
 	try:
-		scoreboard_file = open(file_name, "r", newline='') #In Windows, new lines are created automatically. 
+		scoreboard_file = open(score_file_path, "r", newline="") #In Windows, new lines are created automatically. 
 		scoreboard_file.close()
 	except FileNotFoundError:
-		scoreboard_file = open(file_name, "w")
-		scoreboard_file.write("Position,Name,Guesses,Time\n")
-		scoreboard_file.close()
+		with open(score_file_path, "w", newline="") as file:
+			writer = csv.DictWriter(file, column_names)
+			writer.writeheader()
 
-def update_scoreboard(duration, guess_count):
-	name = input("Enter your name for the scoreboard: ")
-	print(f"Name: {name}, Guesses: {guess_count}, Time: {duration}")
+def write_to_score_file(scoreboard):
+	with open(score_file_path, "w", newline="") as file:
+		writer = csv.DictWriter(file, column_names)
+		writer.writeheader()
+		for row in scoreboard:
+			writer.writerow(row)
+
+
+def get_keys(row):
+    import datetime
+
+def get_keys(row):
+    attempts = int(row["Attempts"])
+    duration = datetime.datetime.strptime(row["Duration"], "%H:%M:%S.%f")
+    duration_td = datetime.timedelta(hours=duration.hour, minutes=duration.minute, 
+                                     seconds=duration.second, microseconds=duration.microsecond)
+    return attempts, duration_td
+
+
+def sort_scoreboard(scoreboard):
+	sorted_scoreboard = sorted(scoreboard, key=get_keys)
+	for i, row in enumerate(sorted_scoreboard):
+		row["Position"] = i + 1
+	return sorted_scoreboard
+	
+
+def add_to_scoreboard(name, guess_count, duration, word):
+	scoreboard = []
+	with open(score_file_path, "r+", newline="") as file:
+		reader = csv.DictReader(file)
+		for row in reader:
+			scoreboard.append(row)
+		new_row = {"Name": name, "Attempts": guess_count,
+	    	"Duration": duration, "Word": word}
+		scoreboard.append(new_row)
+	return scoreboard
+
+def adjust_spaces(string, field):
+	match field:
+		case "position":
+			max_len = 10
+		case "name":
+			max_len = 16
+			string = string[:16]
+		case "attempts":
+			max_len = 10
+		case "duration":
+			max_len = 16
+		case "word":
+			max_len = 8
+	string_len = len(string)
+	number_of_spaces = int((max_len - string_len) / 2)
+	margin = " " * number_of_spaces
+	formatted_string = margin + string + margin
+	if string_len % 2 == 1:
+		formatted_string += " "
+	return formatted_string
 
 def print_scoreboard():
-	print("Scoreboard")
+	with open(score_file_path, "r") as file:
+		reader = csv.DictReader(file, column_names)
+		formatted_scoreboard = f'''{colors["blue_font"]}
+		╔═╗╔═╗╔═╗╦═╗╔═╗╔╗ ╔═╗╔═╗╦═╗╔╦╗
+		╚═╗║  ║ ║╠╦╝║╣ ╠╩╗║ ║╠═╣╠╦╝ ║║
+		╚═╝╚═╝╚═╝╩╚═╚═╝╚═╝╚═╝╩ ╩╩╚══╩╝
+'''
+		for row in reader:
+			formatted_scoreboard += f"|{adjust_spaces(row['Position'], 'position')}"
+			formatted_scoreboard += f"|{adjust_spaces(row['Name'], 'name')}"
+			formatted_scoreboard += f"|{adjust_spaces(row['Attempts'], 'attempts')}"
+			formatted_scoreboard += f"|{adjust_spaces(row['Duration'], 'duration')}"
+			formatted_scoreboard += f"|{adjust_spaces(row['Word'], 'word')}|\n"
+		formatted_scoreboard += f"{colors['reset']}\n"
+	print(formatted_scoreboard)
+
+def update_scoreboard(duration, guess_count, word):
+	name = input("		Enter your name for the scoreboard: ")
+	updated_scoreboard = add_to_scoreboard(name.strip(), guess_count,
+						 str(duration), word)
+	sorted_scoreboard = sort_scoreboard(updated_scoreboard)
+	write_to_score_file(sorted_scoreboard)
+	print_scoreboard()
+

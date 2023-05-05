@@ -114,7 +114,7 @@ def main():
             print_word_to_guess(word_to_guess)
             if user_input == word_to_guess:
                 print_you_won()
-                update_scoreboard(game_duration, guess_count)    
+                update_scoreboard(game_duration, guess_count, word_to_guess)    
             elif guess_remaining == 0:
                 print_you_lose()
             continue_game = get_valid_input("ask_to_play_again")
