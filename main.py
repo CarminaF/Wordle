@@ -94,7 +94,7 @@ def main():
     guess_remaining = 6
     guess_count = 0
     guesses = []
-    word_to_guess = random.choice(WORD_BANK).upper()
+    word_to_guess = "HELLO" #random.choice(WORD_BANK).upper()
 
     continue_game = True
     start_time = get_start_time()

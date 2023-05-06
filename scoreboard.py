@@ -1,6 +1,7 @@
 import csv
 import datetime
 from colors import COLORS
+from print import print_instructions, print_thank_you
 
 SCORE_FILE_PATH = "scoreboard.csv"
 COLUMN_NAMES = ["Position", "Name", "Attempts", "Duration", "Word"]
@@ -93,10 +94,22 @@ def print_scoreboard():
     print(display)
 
 def update_score(duration, guess_count, word):
-    name = input("		Enter your name for the scoreboard: ")
-    updated_scoreboard = add_to_scoreboard(name.strip(), guess_count,
-                         str(duration), word)
-    sorted_scoreboard = sort_scoreboard(updated_scoreboard)
-    write_to_score_file(sorted_scoreboard)
-    print_scoreboard()
+    
+    name = ""
+    while True:
+        name = input("		Enter your name for the scoreboard: ")
+        if name.upper().strip() == "QUIT":
+            print_thank_you()
+            exit()
+        elif name.upper().strip() == "INSTRUCTIONS":
+            print_instructions()
+        elif name.upper().strip() == "SCOREBOARD":
+            print_scoreboard()
+        else:
+            updated_scoreboard = add_to_scoreboard(name.strip(), guess_count,
+                            str(duration), word)
+            sorted_scoreboard = sort_scoreboard(updated_scoreboard)
+            write_to_score_file(sorted_scoreboard)
+            print_scoreboard()
+            break
 
