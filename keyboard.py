@@ -36,10 +36,10 @@ def display_keyboard():
         for letter in range(len(KEYBOARD[row])):
             color = "| "
             if KEYBOARD_COLOR[row][letter] == 'G':
-                color = f"| {COLORS['green_bg']}"
+                color = f"| {COLORS['green_bg']}{COLORS['white_font']}"
             elif KEYBOARD_COLOR[row][letter] == 'Y':
-                color = f"| {COLORS['yellow_bg']}"
-            elif KEYBOARD_COLOR[row][letter] == 'H': # H for hidden
+                color = f"| {COLORS['yellow_bg']}{COLORS['white_font']}"
+            elif KEYBOARD_COLOR[row][letter] == 'H':
                 color = f"| {COLORS['hidden']}"
             print(color + f"{KEYBOARD[row][letter]}" + reset, end="")
         print("|")

@@ -87,3 +87,4 @@ https://docs.google.com/spreadsheets/d/1Ixv0nXXOBi0LIbejPO5LQYAO3tF9AxpY7CBLLdf4
 - https://automatetheboringstuff.com/2e/chapter16/ 
 - https://pynative.com/python-timedelta/ 
 - https://www.learnbyexample.org/python-sorted-function/ 
+- https://www.programiz.com/python-programming/methods/built-in/sorted

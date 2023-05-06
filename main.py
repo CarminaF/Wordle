@@ -25,9 +25,9 @@ def format_guess(guess, color):
         tile_color = " "
         reset = f"{COLORS['reset']} |"
         if color[i] == 'G':
-            tile_color = f" {COLORS['green_bg']}"
+            tile_color = f" {COLORS['green_bg']}{COLORS['white_font']}"
         elif color[i] == 'Y':
-            tile_color = f" {COLORS['yellow_bg']}"
+            tile_color = f" {COLORS['yellow_bg']}{COLORS['white_font']}"
         colored_guess += tile_color + f"{guess[i].upper()}" + reset
     return colored_guess
 
@@ -57,7 +57,8 @@ def check_guess(user_guess, word_to_guess):
                     found[j] = True
                     break
             if color[i] == '-':
-                color_in_keyboard(user_guess[i].upper(), 'H')                
+                # H for hidden
+                color_in_keyboard(user_guess[i].upper(), 'H')              
     return color
 
 ####### PRINT_LINE FUNCTION #########
