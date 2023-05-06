@@ -57,7 +57,7 @@ def check_guess(user_guess, word_to_guess):
                     found[j] = True
                     break
             if color[i] == '-':
-                color_in_keyboard(user_guess[i].upper(), 'B')                
+                color_in_keyboard(user_guess[i].upper(), 'H')                
     return color
 
 ####### PRINT_LINE FUNCTION #########

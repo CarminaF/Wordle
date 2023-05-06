@@ -39,8 +39,8 @@ def display_keyboard():
                 color = f"| {COLORS['green_bg']}"
             elif KEYBOARD_COLOR[row][letter] == 'Y':
                 color = f"| {COLORS['yellow_bg']}"
-            elif KEYBOARD_COLOR[row][letter] == 'B': # B for blackout
-                color = f"| {COLORS['grey_bg']}"
+            elif KEYBOARD_COLOR[row][letter] == 'H': # H for hidden
+                color = f"| {COLORS['hidden']}"
             print(color + f"{KEYBOARD[row][letter]}" + reset, end="")
         print("|")
         print_keyboard_margin()

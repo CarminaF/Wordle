@@ -12,6 +12,6 @@ COLORS = {
     "blue_font": fg(6),
     "green_font": fg(28),
     "yellow_font": fg(11),
-    "pink_font": fg(199),
+    "hidden": attr(8),
     "reset": attr('reset')
 }
