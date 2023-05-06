@@ -22,10 +22,6 @@ def write_to_score_file(scoreboard):
         for row in scoreboard:
             writer.writerow(row)
 
-
-def get_keys(row):
-    import datetime
-
 def get_keys(row):
     attempts = int(row["Attempts"])
     duration = datetime.datetime.strptime(row["Duration"], "%H:%M:%S.%f")
@@ -34,7 +30,6 @@ def get_keys(row):
                                     seconds=duration.second,
                                     microseconds=duration.microsecond)
     return attempts, duration_td
-
 
 def sort_scoreboard(scoreboard):
     sorted_scoreboard = sorted(scoreboard, key=get_keys)
@@ -93,9 +88,7 @@ def print_scoreboard():
         display += f"{COLORS['reset']}\n"
     print(display)
 
-def update_score(duration, guess_count, word):
-    
-    name = ""
+def update_score(duration, guess_count, word):   
     while True:
         name = input("		Enter your name for the scoreboard: ")
         if name.upper().strip() == "QUIT":

@@ -49,7 +49,7 @@ def check_guess(user_guess, word_to_guess):
             
     for i in range(len(user_guess)):
         if color[i] == '-':
-            for j in range(len(user_guess)):
+            for j in range(len(word_to_guess)):
                 if (user_guess[i] == word_to_guess[j] and
                     not found[j]):
                     color[i] = 'Y'

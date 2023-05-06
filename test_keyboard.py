@@ -1,4 +1,3 @@
-from keyboard import KEYBOARD, KEYBOARD_COLOR
 from keyboard import get_keyboard_index
 
 def test_get_keyboard_index():

@@ -25,7 +25,7 @@ INSTRUCTIONS:
 5.	Type "quit" and press "enter" on your keyboard to exit 
 	the game.
 
-6. Type "scoreboard" to view the scoreboard
+6. 	Type "scoreboard" to view the scoreboard
 
 ********************************************************************
 {COLORS['reset']}''')
