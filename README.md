@@ -4,7 +4,7 @@ Github repository:
 https://github.com/CarminaF/Wordle
 
 Walkthrough video:  
-https://youtu.be/SAND073fWIE
+Submitted in README to Coder Academy 
 
 ##  Preview
 
