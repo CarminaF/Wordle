@@ -27,7 +27,7 @@ This is a recreation of the New York Times' Wordle game as a terminal applicatio
 
 ## Requirements
 
-A Linux-based operating system such as MacOS or Unix is required for this program. Python 3 is also required for this program to run which may or may not already be installed in your computer. Please also ensure pip is installed however, pip may already be installed in your computer with Python 3. UPDATE: Python 3.10 onwards is required. 
+A Linux-based operating system such as MacOS or Unix is required for this program. Python 3 is also required for this program to run which may or may not already be installed in your computer. Please also ensure pip is installed however, pip may already be installed in your computer with Python 3. UPDATE: Python 3.11 onwards is required. 
 
 ### Check if Python 3 is installed:  
 
